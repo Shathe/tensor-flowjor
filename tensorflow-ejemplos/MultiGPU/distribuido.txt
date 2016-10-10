@@ -1,0 +1,1 @@
+Para hacerlo distribuido, aprender aquí https://www.tensorflow.org/versions/r0.11/how_tos/distributed/index.html
