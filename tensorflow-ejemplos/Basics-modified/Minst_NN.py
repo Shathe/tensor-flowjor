@@ -49,8 +49,8 @@ def max_pool_2x2(x):
 W_conv1 = weight_variable([5, 5, 1, 32])
 b_conv1 = bias_variable([32])
 
-#To apply the layer, we first reshape x to a 4d tensor,
-# with the second and third dimensions corresponding to image width and height,
+# To apply the layer, we first reshape x to a 4d tensor,
+# with the second and third dimensions corresponding to input image width and height,
 # and the final dimension corresponding to the number of color channels.
 
 x_image = tf.reshape(x, [-1,28,28,1])
@@ -108,9 +108,9 @@ train_step = tf.train.AdamOptimizer(1e-4).minimize(cross_entropy) #trainer
 correct_prediction = tf.equal(tf.argmax(y_conv,1), tf.argmax(y_,1))
 accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32)) #accuracy
 sess.run(tf.initialize_all_variables())
-for i in range(20000):
+for i in range(10000):
   batch = mnist.train.next_batch(50)
-  if i%100 == 0:
+  if i%200 == 0:
     train_accuracy = accuracy.eval(feed_dict={
         x:batch[0], y_: batch[1], keep_prob: 1.0}) #see what accuracy we have  for the tim being
     print("step %d, training accuracy %g"%(i, train_accuracy))
